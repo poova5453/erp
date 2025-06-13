@@ -1,15 +1,34 @@
 @extends('layouts.app')
 @section('content')
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert">
-        <div class="d-flex">
-            <div class="toast-body">
-                {{ session('success') }}
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
+@if(session('success'))
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        showToast("{{ session('success') }}", true);
+    });
+</script>
+@endif
+<!------ toast------>
+ <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastMessage" class="toast align-items-center text-white bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toast-body">
+      
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
     </div>
-</div>
+  </div>
+</div> 
+
+<!-- <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastMessage" class="toast align-items-center text-white bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toast-body">
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div> -->
+<!------ toast end------>
 <div class="content">
     <div class="container">
         <div class="page-title">
@@ -28,6 +47,8 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
+                            <th>GST</th>
+
                             <th></th>
                         </tr>
                     </thead>
@@ -39,6 +60,8 @@
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->mobile }}</td>
                             <td>{{ $customer->address }}</td>
+                            <td>{{ $customer->gst }}</td>
+
                             <td class="text-end">
                                 
                                 <a  class="btn btn-outline-info btn-rounded editpost"  id="editmodal" data-id="{{ $customer->id }}" ><i class="fas fa-pen" ></i></a>
@@ -93,6 +116,7 @@
                                         <input type="text" name="gst" id="gst" placeholder="Enter GST"
                                             class="form-control">
                                     </div>
+                                    
                                      <div class="mb-3">
                                         <label  class="form-label">Address</label>
                                         <textarea  class="form-control" id="address" rows="5" cols="50">
@@ -102,7 +126,7 @@
                                             class="form-control"> -->
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" class="btn btn-success  float-end" id="add" >Add</button>
+                                        <button type="button" class="btn btn-success  float-end" id="add" >Add</button>
                                     </div>
                                 </form>
                             </div>
@@ -133,8 +157,10 @@
                             </div>
                             <div class="modal-body text-start">
                               
-                                <form id="editForm" accept-charset="utf-8">
+                                <form >
                                     @csrf
+                                    <input type="text" name="id1"  id="id1" placeholder="Enter Name"
+                                            class="form-control" vlaue="">
                                      <div class="mb-3">
                                         <label  class="form-label">Name</label>
                                         <input type="text" name="name"  id="name1"placeholder="Enter Name"
@@ -164,7 +190,7 @@
                                             class="form-control"> -->
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" class="btn btn-success  float-end update" id="update">Update</button>
+                                        <button type="button" class="btn btn-success  float-end update" id="update">Update</button>
                                     </div>
                                 </form>
                             </div>

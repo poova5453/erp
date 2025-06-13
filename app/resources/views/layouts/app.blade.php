@@ -20,6 +20,9 @@
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
     <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
+    <!-- Required for Bootstrap Toasts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>

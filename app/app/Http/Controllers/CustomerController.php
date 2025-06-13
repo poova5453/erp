@@ -52,11 +52,14 @@ class CustomerController extends Controller
         $customer->email =$request->email;
         $customer->mobile = $request->mobile;
         $customer->address = $request->address;
+        $customer->gst = $request->gst;
+
 
 $customer->save();
 
-        return redirect()->route('customer.index')->with('success', 'Customer created successfully.');
-        
+       return response()->json([
+            'redirect' => route('customer.index')
+        ]);
     }
 
     /**
@@ -92,7 +95,19 @@ $customer->save();
      */
     public function update(Request $request, $id)
     {
-        //
+
+         $customer = Customers::findOrFail($id);
+    $customer->name = $request->name;
+    $customer->email = $request->email;
+    $customer->mobile = $request->mobile;
+    $customer->address = $request->address;
+    $customer->gst = $request->gst;
+    $customer->save();
+
+    return response()->json([
+            'redirect' => route('customer.index')
+        ]);
+      
     }
 
     /**
@@ -106,12 +121,12 @@ $customer->save();
     {
         // dd($customer);
      
-         $customer = Customers::findOrFail($customer);
-         $customer->delete();
+        $customer = Customers::findOrFail($customer);
+        $customer->delete();
+
         return response()->json([
-    'success' => true,
-    'message' => 'Deleted successfully',
-    'redirect' => route('customer.index')  // Send the route as a value
-]);
+           
+            'redirect' => route('customer.index')
+        ]);
     }
 }

@@ -3,12 +3,12 @@ $(document).ready(function () {
 });
 
 $("#add").click(function () {
-    const name = $("#username").val();
-    const email = $("#email").val();
-    const mobile = $("#mobile").val();
-    const address = $("#address").val();
+    const itemname = $("#itemname").val();
+    const itemcode = $("#itemcode").val();
     const gst = $("#gst").val();
-    const url = "/customer";
+    const rate = $("#rate").val();
+    const url = "/item";
+    
 
     $.ajax({
         url: url,
@@ -20,14 +20,13 @@ $("#add").click(function () {
                 .getAttribute("content"),
         },
         data: JSON.stringify({
-            name: name,
-            email: email,
-            mobile: mobile,
-            address: address,
+            itemname: itemname,
+            itemcode: itemcode,
             gst: gst,
+            rate: rate
         }),
         success: function (data) {
-            showToast("Customer created successfully", true, 3000);
+            showToast("Item created successfully", true, 3000);
             $("#addForm")[0].reset();
             setTimeout(() => {
                 if (data.redirect) {
@@ -36,7 +35,7 @@ $("#add").click(function () {
             }, 3000);
         },
         error: function () {
-            showToast("Failed to create customer", false, 3000);
+            showToast("Failed to create item", false, 3000);
             setTimeout(() => {
                 if (data.redirect) {
                     window.location.href = data.redirect;
@@ -51,22 +50,20 @@ $(document).ready(function () {
 
         id1 = $("#id1").val();
         console.log(id1);
-        name1 = $("#name1").val();
-        email1 = $("#email1").val();
-        mobile1 = $("#mobile1").val();
-        address1 = $("#address1").val();
+        itemname1 = $("#itemname1").val();
+        itemcode1 = $("#itemcode1").val();
         gst1 = $("#gst1").val();
+        rate1 = $("#rate1").val()
 
         $.ajax({
-            url: `/customer/${id1}`,
+            url: `/item/${id1}`,
             type: "PUT",
             data: JSON.stringify({
                 id: id1,
-                name: name1,
-                email: email1,
-                mobile: mobile1,
-                address: address1,
+                itemname: itemname1,
+                itemcode: itemcode1,
                 gst: gst1,
+                rate: rate1,
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -77,7 +74,7 @@ $(document).ready(function () {
             success: function (data) {
                 setTimeout(() => {
                     showToast(
-                        "Customer Details Updated successfully",
+                        "Item Details Updated successfully",
                         true,
                         3000
                     );
@@ -90,7 +87,7 @@ $(document).ready(function () {
             },
             error: function () {
                 setTimeout(() => {
-                    showToast("Failed to update customer Details", false, 3000);
+                    showToast("Failed to update item Details", false, 3000);
                 }, 0);
 
                 if (data.redirect) {
@@ -103,10 +100,10 @@ $(document).ready(function () {
 
 $(document).on("click", ".editpost", function (e) {
     e.preventDefault();
-    var customer = $(this).data("id");
+    var item = $(this).data("id");
 
     $.ajax({
-        url: `/customer/${customer}/edit`,
+        url: `/item/${item}/edit`,
         type: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -118,24 +115,22 @@ $(document).on("click", ".editpost", function (e) {
             var val = JSON.stringify(data);
 
             var val1 = JSON.parse(val);
-
-            $("#id1").val(val1.id);
-            $("#name1").val(val1.name);
-            $("#email1").val(val1.email);
-            $("#mobile1").val(val1.mobile);
-            $("#address1").val(val1.address);
+      $("#id1").val(val1.id);
+            $("#itemname1").val(val1.itemname);
+            $("#itemcode1").val(val1.itemcode);
             $("#gst1").val(val1.gst);
+            $("#rate1").val(val1.rate);
             $(".editModal").modal("show");
         },
     });
 });
 
 $(document).on("click", "#deletePost", function () {
-    var customer = $(this).data("id");
+    var item = $(this).data("id");
 
     if (confirm("Are you sure to delete this post?")) {
         $.ajax({
-            url: `/customer/${customer}`,
+            url: `/item/${item}`,
             type: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -144,7 +139,7 @@ $(document).on("click", "#deletePost", function () {
                     .getAttribute("content"),
             },
             success: function (data) {
-                showToast("Customer Details Deleted successfully", true, 3000);
+                showToast("Item Details Deleted successfully", true, 3000);
                 $("#addForm")[0].reset();
                 setTimeout(() => {
                     if (data.redirect) {
@@ -153,7 +148,7 @@ $(document).on("click", "#deletePost", function () {
                 }, 3000);
             },
             error: function () {
-                showToast("Failed to delete customer Details", false, 3000);
+                showToast("Failed to delete item Details", false, 3000);
                 setTimeout(() => {
                     if (data.redirect) {
                         window.location.href = data.redirect;

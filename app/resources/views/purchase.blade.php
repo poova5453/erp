@@ -4,8 +4,8 @@
     <div class="container">
         <div class="page-title">
             <h3>Users
-                <a href="roles.html" class="btn btn-sm btn-outline-primary float-end"><i class="fas fa-user-shield"></i>
-                    Roles</a>
+                <a href="/purchase-form" class="btn btn-sm btn-outline-primary float-end"><i class="fas fa-user-shield"></i>
+                    Add New</a>
             </h3>
         </div>
         <div class="box box-primary">

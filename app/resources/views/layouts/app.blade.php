@@ -20,6 +20,11 @@
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
     <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
+    <!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
     <!-- Required for Bootstrap Toasts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -40,10 +45,10 @@
                     <a href="#purchase" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Purchase</a>
                     <ul class="collapse list-unstyled" id="purchase">
                         <li>
-                            <a href=""><i class="fas fa-angle-right"></i> Purchase</a>
+                            <a href="{{route('purchase.index')}}"><i class="fas fa-angle-right"></i> Purchase</a>
                         </li>
                         <li>
-                            <a href="ui-badges.html"><i class="fas fa-angle-right"></i> Purchase Invoice</a>
+                            <a href=""><i class="fas fa-angle-right"></i> Purchase Invoice</a>
                         </li>
                     </ul>
                 </li>
@@ -67,6 +72,9 @@
                         </li>
                         <li>
                             <a href="uppliers"><i class="fas fa-angle-right"></i> Suppliers</a>
+                        </li>
+                         <li>
+                            <a href="{{route('item.index')}}"><i class="fas fa-angle-right"></i> ItemMaster</a>
                         </li>
                          <li>
                             <a href="ui-badges.html"><i class="fas fa-angle-right"></i> Users</a>
@@ -216,6 +224,15 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/vendor/datatables/datatables.min.js"></script>
      <script src="assets/js/customer.js"></script>
+     <script src="assets/js/purchase.js"></script>
+     <script src="assets/js/item.js"></script>
+     <!-- jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 
     <!-- <script src="assets/vendor/datatables/datatables.js"></script> -->
 

@@ -24,7 +24,7 @@
 <div class="content">
     <div class="container">
         <div class="page-title">
-            <h3>Cusotmer
+            <h3>Item master
                 <a class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fas fa-user-shield"></i>
                     Add New</a>
             </h3>
@@ -34,29 +34,28 @@
                 <table width="100%" class="table table-hover" id="myTable">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Status</th>
-                            <th>GST</th>
+                            <th>Itemcode</th>
+                            <th>ItemName</th>
+                            <th>Gst</th>
+                            <th>Rate</th>
+                            
 
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($customers as $customer)
+                        @foreach($items as $item)
                         <tr>
 
-                            <td>{{ $customer->name }}</td>
-                            <td>{{ $customer->email }}</td>
-                            <td>{{ $customer->mobile }}</td>
-                            <td>{{ $customer->address }}</td>
-                            <td>{{ $customer->gst }}</td>
+                            <td>{{ $item->itemcode }}</td>
+                            <td>{{ $item->itemname }}</td>
+                            <td>{{ $item->gst }}</td>
+                            <td>{{ $item->rate }}</td>
 
                             <td class="text-end">
 
-                                <a class="btn btn-outline-info btn-rounded editpost" id="editmodal" data-id="{{ $customer->id }}"><i class="fas fa-pen"></i></a>
-                                <a class="btn btn-outline-danger btn-rounded " id="deletePost" data-id="{{ $customer->id }}"><i class="fas fa-trash"></i></a>
+                                <a class="btn btn-outline-info btn-rounded editpost" id="editmodal" data-id="{{ $item->id }}"><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-outline-danger btn-rounded " id="deletePost" data-id="{{ $item->id }}"><i class="fas fa-trash"></i></a>
 
                             </td>
                         </tr>
@@ -78,7 +77,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title ">Customer</h5>
+                                <h5 class="modal-title ">Item Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -88,34 +87,27 @@
 
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" name="name" id="username" placeholder="Enter Name"
+                                        <label class="form-label">ItemName</label>
+                                        <input type="text" name="itemname" id="itemname" placeholder="Enter ItemName"
                                             class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Mobile No</label>
-                                        <input type="text" name="mobileno" id="mobile" placeholder="Enter Mobile"
+                                        <label class="form-label">Item Code</label>
+                                        <input type="text" name="itemcode" id="itemcode" placeholder="Enter item code"
                                             class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="text" name="email" id="email" placeholder="Enter Address"
+                                        <label class="form-label">Gst</label>
+                                        <input type="text" name="gst" id="gst" placeholder="Enter Gst"
                                             class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">GST</label>
-                                        <input type="text" name="gst" id="gst" placeholder="Enter GST"
+                                        <label class="form-label">Rate</label>
+                                        <input type="text" name="rate" id="rate" placeholder="Enter Rate"
                                             class="form-control">
                                     </div>
+                                    
 
-                                    <div class="mb-3">
-                                        <label class="form-label">Address</label>
-                                        <textarea class="form-control" id="address" rows="5" cols="50">
-
-                                        </textarea>
-                                        <!-- <input type="text" name="gst" placeholder="Enter GST"
-                                            class="form-control"> -->
-                                    </div>
                                     <div class="mb-3">
                                         <button type="button" class="btn btn-success  float-end" id="add">Add</button>
                                     </div>
@@ -150,33 +142,28 @@
 
                                 <form>
                                     @csrf
-                                    <input type="text" name="id1" id="id1" placeholder="Enter Name"
+                                        <div class="mb-3">
+                                              <input type="text" name="id1" id="id1" placeholder="Enter Name"
                                         class="form-control" vlaue="">
-                                    <div class="mb-3">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" name="name" id="name1" placeholder="Enter Name"
-                                            class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Mobile No</label>
-                                        <input type="text" name="mobileno" id="mobile1" placeholder="Enter Mobile"
-                                            class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" name="email" id="email1" placeholder="Enter Address"
-                                            class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">GST</label>
-                                        <input type="text" name="gst" id="gst1" placeholder="Enter GST"
-                                            class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Address</label>
-                                        <textarea class="form-control" id="address1" rows="5" cols="50">
-
-                                        </textarea>
+                                            <label class="form-label">ItemName</label>
+                                            <input type="text" name="itemname1" id="itemname1" placeholder="Enter ItemName"
+                                                class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Item Code</label>
+                                            <input type="text" name="itemcode1" id="itemcode1" placeholder="Enter item code"
+                                                class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Gst</label>
+                                            <input type="text" name="gst1" id="gst1" placeholder="Enter Gst"
+                                                class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Rate</label>
+                                            <input type="text" name="rate1" id="rate1" placeholder="Enter Rate"
+                                                class="form-control">
+                                        </div>
                                         <!-- <input type="text" name="gst" placeholder="Enter GST"
                                             class="form-control"> -->
                                     </div>

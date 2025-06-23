@@ -25,9 +25,6 @@ WORKDIR /var/www/html
 # Copy Laravel app into container
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --optimize-autoloader --no-dev
-
 # Set correct Apache DocumentRoot to Laravel public folder
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 

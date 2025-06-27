@@ -18,7 +18,9 @@ use App\Http\Controllers\ItemController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/health', function () {
+    return 'Laravel OK';
+});
 
 Route::get('/', function () {
     return redirect('login');
